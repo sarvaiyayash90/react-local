@@ -62,16 +62,28 @@ export default function App() {
         throw new Error('Something Went Wrong!');
       }
       const data = await response.json();
-      const newData = data.results.map(item => {
-        return {
-          id: item.episode_id,
-          title: item.title,
-          openingText: item.opening_crawl,
-          releaseDate: item.release_date
-        };
-      });
+
+      const loadData = [];
+      for (const key in data) {
+        loadData.push({
+          id: key,
+          title: data[key].title,
+          openingText: data[key].openingText,
+          releaseDate: data[key].releaseDate
+        });
+      }
+      setdata(loadData);
+
+      // const newData = data.results.map(item => {
+      //   return {
+      //     id: item.episode_id,
+      //     title: item.title,
+      //     openingText: item.opening_crawl,
+      //     releaseDate: item.release_date
+      //   };
+      // });
       // console.log('dassasas', newData);
-      setdata(newData);
+      // setdata(newData);
     } catch (error) {
       setError(error.message);
     }
@@ -101,15 +113,15 @@ export default function App() {
     const response = await fetch(
       'https://react-demo-bc807-default-rtdb.firebaseio.com/movies.json',
       {
-        method: post,
+        method: 'POST',
         body: JSON.stringify(addNewData),
         headers: {
-          'Content-type': 'application/json'
+          'Content-Type': 'application/json'
         }
       }
     );
     const data = await response.json();
-    console.log('datad', data);
+    console.log('New-------------', data);
   };
 
   return (
