@@ -5,7 +5,12 @@ const List = props => {
   return (
     <ul>
       {props.items.map(item => (
-        <ListItem id={item.id} key={item.id} name={item.name} />
+        <ListItem
+          id={item.id}
+          key={item.id}
+          name={item.name}
+          onClick={props.id}
+        />
       ))}
     </ul>
   );

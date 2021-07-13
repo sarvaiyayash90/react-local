@@ -6,7 +6,7 @@ import List from './List';
 
 import NewData from './NewData';
 
-const data = [
+const allData = [
   {
     id: 'a1',
     name: 'sanket'
@@ -30,6 +30,8 @@ const data = [
 ];
 
 export default function App() {
+  const [data, setdata] = useState(allData);
+
   const [newname, setname] = useState('yash');
 
   const setNameHandler = name => {
@@ -38,13 +40,20 @@ export default function App() {
     namedata === 'yash' ? setname(name) : setname('yash');
   };
 
+  const remove = id => {
+    const dd = data.filter(val => {
+      val.id !== id;
+    });
+    setdata(dd);
+  };
+
   return (
     <div>
       <MYdata.default />
       <MYdata.NewApp_new />
       <MYdata.NewApp />
       {MYdata.datadata}
-      <List items={data} />
+      <List items={data} removeData={remove} />
       <NewData onAdddata={setNameHandler} />
       {newname}
       <h1>Hello StackBlitz!</h1>
