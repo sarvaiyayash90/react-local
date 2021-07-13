@@ -11,7 +11,11 @@ const ListItem = props => {
       <li style={{ listStyle: 'none' }}>
         Id : {props.id}
         <br />
-        Name : {props.name}&nbsp;&nbsp;
+        Title : {props.title}&nbsp;&nbsp; <br />
+        Opening Text : {props.openingText}&nbsp;&nbsp;
+        <br />
+        releaseDate : {props.releaseDate}&nbsp;&nbsp;
+        <br />
         <button onClick={() => remove(props.id)}>delete</button>
         <hr />
       </li>

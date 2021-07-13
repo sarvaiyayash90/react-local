@@ -30,7 +30,7 @@ const allData = [
 ];
 
 export default function App() {
-  const [data, setdata] = useState(allData);
+  const [data, setdata] = useState([]);
 
   const [newname, setname] = useState('yash');
 
@@ -47,6 +47,21 @@ export default function App() {
     setdata(dd);
   };
 
+  const fetchData = async () => {
+    const response = await fetch('https://swapi.dev/api/films/');
+    const data = await response.json();
+    const newData = data.results.map(item => {
+      return {
+        id: item.episode_id,
+        title: item.title,
+        openingText: item.opening_crawl,
+        releaseDate: item.release_date
+      };
+    });
+    // console.log('dassasas', newData);
+    setdata(newData);
+  };
+
   return (
     <div>
       <MYdata.default />
@@ -55,7 +70,10 @@ export default function App() {
       {MYdata.datadata}
       <List items={data} removeData={remove} />
       <NewData onAdddata={setNameHandler} />
-      {newname}
+      &nbsp;&nbsp;{newname}
+      <br />
+      <br />
+      <button onClick={() => fetchData()}>fetch data</button>
       <h1>Hello StackBlitz!</h1>
       <p>Start editing to see some magic happen :)</p>
     </div>

@@ -8,7 +8,9 @@ const List = props => {
         <ListItem
           id={item.id}
           key={item.id}
-          name={item.name}
+          title={item.title}
+          openingText={item.openingText}
+          releaseDate={item.releaseDate}
           NewRemoveData={props.removeData}
         />
       ))}
