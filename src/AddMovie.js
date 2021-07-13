@@ -15,6 +15,9 @@ const AddMovies = props => {
     };
     // console.log('data', data);
     props.addMoviesData(data);
+    titleRef = '';
+    openingTextRef = '';
+    releaseDateRef = '';
   };
 
   return (
