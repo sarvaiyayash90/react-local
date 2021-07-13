@@ -4,6 +4,8 @@ import './style.css';
 import * as MYdata from './NewApp';
 import List from './List';
 
+import AddMovies from './AddMovie';
+
 import NewData from './NewData';
 
 const allData = [
@@ -94,6 +96,22 @@ export default function App() {
     content = <p>{error}</p>;
   }
 
+  const addMoviesHandler = async addNewData => {
+    // console.log('new_____', addNewData);
+    const response = await fetch(
+      'https://react-demo-bc807-default-rtdb.firebaseio.com/movies.json',
+      {
+        method: post,
+        body: JSON.stringify(addNewData),
+        headers: {
+          'Content-type': 'application/json'
+        }
+      }
+    );
+    const data = await response.json();
+    console.log('datad', data);
+  };
+
   return (
     <div>
       <MYdata.default />
@@ -116,6 +134,7 @@ export default function App() {
       )} */}
       <h1>Hello StackBlitz!</h1>
       <p>Start editing to see some magic happen :)</p>
+      <AddMovies addMoviesData={addMoviesHandler} />
     </div>
   );
 }
