@@ -9,7 +9,7 @@ const List = props => {
           id={item.id}
           key={item.id}
           name={item.name}
-          onClick={props.id}
+          NewRemoveData={props.removeData}
         />
       ))}
     </ul>

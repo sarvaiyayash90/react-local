@@ -42,7 +42,7 @@ export default function App() {
 
   const remove = id => {
     const dd = data.filter(val => {
-      val.id !== id;
+      return val.id !== id;
     });
     setdata(dd);
   };
