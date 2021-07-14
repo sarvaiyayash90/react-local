@@ -3,9 +3,7 @@ import './style.css';
 // import Myname, { NewApp, NewApp_new } from './NewApp';
 import * as MYdata from './NewApp';
 import List from './List';
-
 import AddMovies from './AddMovie';
-
 import NewData from './NewData';
 
 const allData = [
@@ -64,6 +62,7 @@ export default function App() {
       const data = await response.json();
 
       const loadData = [];
+
       for (const key in data) {
         loadData.push({
           id: key,
@@ -73,7 +72,6 @@ export default function App() {
         });
       }
       setdata(loadData);
-
       // const newData = data.results.map(item => {
       //   return {
       //     id: item.episode_id,
